@@ -1,4 +1,4 @@
-from swarm import Swarm, Agent
+from swarm import Agent, Swarm
 
 client = Swarm()
 
@@ -22,6 +22,8 @@ while True:
     messages.append({"role": "user", "content": user_input})
 
     response = client.run(agent=agent, messages=messages)
-    messages = response.messages
+
+    assert response.agent
     agent = response.agent
-    pretty_print_messages(messages)
+    pretty_print_messages(response.messages)
+    messages.extend(response.messages)
