@@ -3,7 +3,7 @@ from swarm import Swarm, Agent
 client = Swarm()
 
 
-def instructions(context_variables):
+def instructions(context_variables: dict) -> str:
     name = context_variables.get("name", "User")
     return f"You are a helpful agent. Greet the user by name ({name})."
 
